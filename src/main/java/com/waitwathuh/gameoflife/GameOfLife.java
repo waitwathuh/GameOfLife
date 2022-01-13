@@ -78,10 +78,42 @@ public class GameOfLife implements Runnable {
 			}
 		}
 
+		// Check up+right
+		if (y != 0 && x != gameWidth - 1) {
+			Cell cellAboveRight = gameMap.get((x + 1) + "," + (y - 1));
+			if (cellAboveRight.isAlive()) {
+				alive++;
+			}
+		}
+
+		// Check right
+		if (x != gameWidth - 1) {
+			Cell cellRight = gameMap.get((x + 1) + "," + y);
+			if (cellRight.isAlive()) {
+				alive++;
+			}
+		}
+
+		// Check right+down
+		if (x != gameWidth - 1 && y != gameHeight - 1) {
+			Cell cellRightBellow = gameMap.get((x + 1) + "," + (y + 1));
+			if (cellRightBellow.isAlive()) {
+				alive++;
+			}
+		}
+
 		// Check down
 		if (y != gameHeight - 1) {
 			Cell cellBellow = gameMap.get(x + "," + (y + 1));
 			if (cellBellow.isAlive()) {
+				alive++;
+			}
+		}
+
+		// Check down+left
+		if (y != gameHeight - 1 && x != 0) {
+			Cell cellBellowLeft = gameMap.get((x - 1) + "," + (y + 1));
+			if (cellBellowLeft.isAlive()) {
 				alive++;
 			}
 		}
@@ -94,10 +126,10 @@ public class GameOfLife implements Runnable {
 			}
 		}
 
-		// Check right
-		if (x != gameWidth - 1) {
-			Cell cellRight = gameMap.get((x + 1) + "," + y);
-			if (cellRight.isAlive()) {
+		// Check left+up
+		if (x != 0 && y != 0) {
+			Cell cellLeftAbove = gameMap.get((x - 1) + "," + (y - 1));
+			if (cellLeftAbove.isAlive()) {
 				alive++;
 			}
 		}

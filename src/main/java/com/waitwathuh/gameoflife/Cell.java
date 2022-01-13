@@ -1,9 +1,12 @@
 package com.waitwathuh.gameoflife;
 
+import java.awt.image.BufferedImage;
+
 public class Cell {
 	private int x;
 	private int y;
 	private boolean isAlive;
+	private BufferedImage image;
 
 	public Cell (int x, int y, boolean isAlive) {
 		this.x = x;
@@ -15,16 +18,8 @@ public class Cell {
 		return x;
 	}
 
-	public void setX(int x) {
-		this.x = x;
-	}
-
 	public int getY() {
 		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
 	}
 
 	public boolean isAlive() {
@@ -33,5 +28,10 @@ public class Cell {
 
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
+		image = isAlive ? CellImage.getAliveImage() : CellImage.getDeadImage() ;
+	}
+
+	public BufferedImage getImage() {
+		return image;
 	}
 }
